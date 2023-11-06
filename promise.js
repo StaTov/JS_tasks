@@ -42,3 +42,19 @@ promise2
     .then((p) => p + 1)
     .then((p) => console.log(p))
 // ===================================================================
+
+const foo = async () => {
+    console.log('async function foo'); //
+    return 100;
+}
+
+const bar = async () => {
+    console.log('console inside bar'); //
+    const r = await foo();
+    console.log(r); //
+    foo().then(res => console.log(res));
+    console.log('1', await 'console.log immediately after await'); //
+};
+
+bar();
+// ===================================================================
